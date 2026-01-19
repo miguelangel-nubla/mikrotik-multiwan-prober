@@ -1,0 +1,15 @@
+[Unit]
+Description=Multi-port IP Echo Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/ip-echo -start-port 2000 -end-port 2010
+Restart=always
+User=nobody
+Group=nogroup
+# Allow binding to ports below 1024 if needed (though default is 2000+)
+# CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+# AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

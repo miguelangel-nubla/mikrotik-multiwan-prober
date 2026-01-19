@@ -1,0 +1,8 @@
+FROM alpine:3.20
+RUN apk add --no-cache ca-certificates
+ARG BINARY
+ARG TARGETOS
+ARG TARGETARCH
+ARG TARGETVARIANT
+COPY ${TARGETOS}/${TARGETARCH}${TARGETVARIANT}/${BINARY} /usr/local/bin/mikrotik-multiwan-prober
+ENTRYPOINT ["/usr/local/bin/mikrotik-multiwan-prober"]
